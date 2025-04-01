@@ -1,0 +1,14 @@
+botkey.py
+AnalysisPhoto/
+DataSetApples/
+DataSetBellpepper/
+DataSetCarrots/
+DataSetOranges/
+DataSetPotatoes/
+DataSetTomatoes/
+Include/
+Lib/
+Scripts/
+share/
+pyvenv.cfg
+DataSetEllie.rar
