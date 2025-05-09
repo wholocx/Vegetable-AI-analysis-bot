@@ -1,14 +1,9 @@
-botkey.py
 AnalysisPhoto/
-DataSetApples/
-DataSetBellpepper/
-DataSetCarrots/
-DataSetOranges/
-DataSetPotatoes/
-DataSetTomatoes/
+DataSet/
 Include/
 Lib/
 Scripts/
 share/
 pyvenv.cfg
 DataSetEllie.rar
+__pycache__

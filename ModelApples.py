@@ -1,20 +1,13 @@
-import PIL
 import os
-import torch
-import numpy as np
 import matplotlib.pyplot as plt
 from fastai.vision.all import *
-from fastai.metrics import error_rate
-from fastai.data.external import untar_data, URLs
 from fastai.data.transforms import get_image_files
 
 
 if __name__ == '__main__':    
-
-    bs = 50  #batch size: if your GPU is running out of memory, set a smaller batch size, i.e 16
+    bs = 50  #batch size
     sz = 224 #image size
-    ds_path = 'thesisProj\DataSetApples'
-
+    ds_path = 'DataSet'
 
     classes = []
     # Classes of pictures initialisation
@@ -42,17 +35,13 @@ if __name__ == '__main__':
     learn = vision_learner(data, models.resnet34, pretrained=True, weights=ResNet34_Weights.DEFAULT, metrics=accuracy)
     learn.lr_find()
     plt.show()
-    learn.fit_one_cycle(4, slice(1e-3,1e-2))
+    learn.fit_one_cycle(4, slice(1e-2,1e-1))
     interp = ClassificationInterpretation.from_learner(learn)
     interp.plot_confusion_matrix(figsize=(12,12), dpi=60)
     plt.show()
     interp.most_confused(min_val=1)
     plt.show()
-    path_test = "thesisProj\AnalysisPhoto" #The path of your test image
-    files = get_image_files(path_test)
-    # сделать анализ пачки фото, возможно вынести в отдельную функцию
-    for image in files:
-        img = PILImage.create(image)
-        pred_class = learn.predict(img)
-        img.show()
-        print ("It is a", pred_class)
+    learn.export()
+
+    # path_test = "thesisProj\AnalysisPhoto"
+    # files = get_image_files(path_test)
